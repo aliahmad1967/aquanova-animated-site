@@ -4,30 +4,21 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function TechnologySection() {
-  const features = [
+  const powerModes = [
     {
-      title: "Predictive Routing",
-      desc: "By analyzing thousands of meteorological data points in real-time, the system automatically suggests the most energy-efficient route, plotting laylines that maximize solar yield and following current patterns.",
-      accent: "cyan",
-      image: "/images/l05.webp"
+      number: "01",
+      title: "Full-electric mode",
+      desc: "The diesel generators are turned off and the catamaran is sailing only electrically with the help of batteries and photovoltaic support. Charging from the column takes only 5 hours and extends all day thanks to solar energy.",
     },
     {
-      title: "Smart Power Grid",
-      desc: "Total vessel monitoring ensures critical systems are prioritized. Non-essential loads are elegantly curtailed when the absolute silent cruising experience is desired, all visible on the bridge interface.",
-      accent: "blue",
-      image: "/images/l06.webp"
+      number: "02", 
+      title: "Diesel-electric mode",
+      desc: "The diesel generators are activated to recharge the batteries that power the electric motors. The AI system understands when the battery is running out and turns on the generators at the right time to give charging a boost.",
     },
     {
-      title: "AI Climate Control",
-      desc: "Intelligent thermal management learns your preferences and optimizes cabin climate while minimizing energy consumption through predictive conditioning.",
-      accent: "cyan",
-      image: "/images/l07.webp"
-    },
-    {
-      title: "Hydro-Generation",
-      desc: "Underwater turbines deploy automatically at low speeds, converting hydrodynamic flow into electrical energy while you sail silently through the waves.",
-      accent: "blue",
-      image: "/images/l08.webp"
+      number: "03",
+      title: "Hibernation mode",
+      desc: "The diesel generators are off and the boat is powered only through the solar panels. It's time to use AquaNova's energy in other ways. Why not supply electricity to an entire villa?",
     }
   ];
 
@@ -46,49 +37,33 @@ export default function TechnologySection() {
         >
           <span className="text-[10px] font-medium tracking-[0.5em] uppercase text-cyan-400/80 mb-4 sm:mb-6 block">CORE INNOVATION</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6">
-            NAUTICAI<span className="text-cyan-400">™</span><br />
+            The Heart<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600">
-              PLATFORM
+              of Change
             </span>
           </h2>
-          <p className="text-sm sm:text-lg md:text-xl text-white/60 max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            The beating heart of AquaNova is our proprietary learning algorithm. It orchestrates the flow of energy between the sun, the wind, and the hydro-generators to deliver infinite range.
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 px-2 sm:px-0">
-          {features.map((feature, i) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12">
+          {powerModes.map((mode, i) => (
             <motion.div 
-              key={feature.title}
+              key={mode.number}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative bg-[#00101b]/80 backdrop-blur-sm border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden hover:border-cyan-500/20 transition-all duration-500"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              className="group relative bg-[#00101b]/50 backdrop-blur-sm border border-white/5 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-cyan-500/30 transition-all duration-500"
             >
-              <div className="relative h-[140px] sm:h-[180px] md:h-[200px] overflow-hidden">
-                <Image 
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#00101b] via-[#00101b]/50 to-transparent" />
+              <div className="absolute top-4 sm:top-6 right-6 sm:right-8 text-6xl sm:text-7xl font-bold text-cyan-400/10 group-hover:text-cyan-400/20 transition-colors">
+                {mode.number}
               </div>
               
-              <div className="p-4 sm:p-6 lg:p-10">
-                <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-                  <span className="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 font-bold text-xs sm:text-sm">
-                    0{i + 1}
-                  </span>
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
-                    {feature.title}
-                  </h3>
-                </div>
-                <p className="text-xs sm:text-sm text-white/50 leading-relaxed">
-                  {feature.desc}
-                </p>
-              </div>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4">
+                {mode.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-white/50 leading-relaxed">
+                {mode.desc}
+              </p>
 
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
@@ -102,9 +77,9 @@ export default function TechnologySection() {
           transition={{ delay: 0.4 }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-cyan-500/10 rounded-full border border-cyan-500/20">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-cyan-500/10 rounded-full border border-cyan-500/20">
             <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="text-xs sm:text-sm font-medium text-cyan-400/80 tracking-wide">System Online & Learning</span>
+            <span className="text-sm font-medium text-cyan-400/80 tracking-wide">System Online</span>
           </div>
         </motion.div>
       </div>
